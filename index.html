@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #181717;
+    }
+
+    .main {
+      width: 100%;
+      height: 50vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .frist,
+    .second,
+    .third {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .frist {
+      width: 40%;
+      height: 100%;
+      border: 1px solid black;
+    }
+
+    .second {
+      width: 40%;
+      height: 100%;
+      border: 1px solid black;
+    }
+
+    .third {
+      width: 20%;
+      height: 100%;
+      border: 1px solid black;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .textEnter {
+      width: 500px;
+      height: 100px;
+      border: 1px solid white;
+      color: white;
+      text-transform: capitalize;
+      font-family: sans-serif;
+      padding: 5px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1.5rem;
+      color: white;
+    }
+    @media screen and (max-width:400px){
+      .main{
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .frist{
+        width: 369px;
+        height: 200px;
+        margin-bottom: 20px;
+      }
+      .second{
+        width: 99%;
+        height: 100%;
+        margin-bottom: 20px;
+      }
+      .third{
+        width: 99%;
+        height: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <div class="frist">
+      <div class="input__container">
+        <div class="shadow__input"></div>
+        <button class="input__button__shadow">
+          <svg fill="none" viewBox="0 0 20 20" height="20px" width="20px">
+            <path
+              d="M4 9a5 5 0 1110 0A5 5 0 014 9zm5-7a7 7 0 104.2 12.6.999.999 0 00.093.107l3 3a1 1 0 001.414-1.414l-3-3a.999.999 0 00-.107-.093A7 7 0 009 2z"
+              fill-rule="evenodd" fill="#17202A"></path>
+          </svg>
+        </button>
+        <input type="text" onkeyup="texts()" name="text" class="input__search" placeholder="write description">
+      </div>
+    </div>
+    <div class="second">
+      <div class="textEnter"></div>
+    </div>
+    <div class="third">
+      <!-- <button id="speak" onclick="speak()">Speak</button> -->
+      <button id="speak" onclick="speak()">
+        <span>PLAY NOW</span>
+      </button>
+    </div>
+  </div>
+</body>
+<script>
+  var text = document.querySelector('.textEnter');
+  var input = document.querySelector('.input__search');
+  var btn = document.querySelector('#speak');
+  
+  function speak() {
+    var msg = new SpeechSynthesisUtterance();
+    msg.text = text.textContent;
+    window.speechSynthesis.speak(msg);
+  }
+  function texts() {
+    text.innerHTML = input.value;
+  }
+</script>
+
+</html>
